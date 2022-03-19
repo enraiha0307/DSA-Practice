@@ -256,3 +256,18 @@ int SumN(int n)
         return isPowerOfFour(n/4);
     }
 ```
+- Write a recursive function for given n and a to determine x:
+```
+int FindX(long long n, int a)
+{
+    if (n == 1)
+    {
+        return 0;
+    }
+    if (n % a == 0)
+    {
+        return (1 + FindX(n / a, a));
+    }
+    return -1;
+}
+```

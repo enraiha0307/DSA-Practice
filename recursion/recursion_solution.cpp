@@ -27,7 +27,7 @@ int Prod(int x, int y)
 {
     if (x < y)
     {
-        Prod(y, x);
+        return Prod(y, x);
     }
     else if (y != 0)
     {
@@ -115,6 +115,19 @@ int findMax(int arr[], int n)
     return max(arr[n - 1], findMax(arr, n - 1));
 }
 
+int FindX(long long n, int a)
+{
+    if (n == 1)
+    {
+        return 0;
+    }
+    if (n % a == 0)
+    {
+        return (1 + FindX(n / a, a));
+    }
+    return -1;
+}
+
 int main()
 {
     int arr[10] = {1, 2, 3, 4, 5, -8, 20};
@@ -129,6 +142,7 @@ int main()
     // cout<<RecSum(12345)<<endl;
     // cout<<Prod(5,3)<<endl;
     // cout<<isPrime(11)<<endl;
-    cout << SumN(6) << endl;
+    // cout << SumN(6) << endl;
+    cout << FindX(64, 2) << endl;
     return 0;
 }
