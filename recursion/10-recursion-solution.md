@@ -48,7 +48,10 @@ int findMax(int arr[], int n)
     return max(arr[n - 1], findMax(arr, n - 1));
 }
 ```
+- [Print all possible palindromic partitions of a string.](https://www.geeksforgeeks.org/given-a-string-print-all-possible-palindromic-partition/) `GFG`
+```
 
+```
 - [Binary Search using recursion](https://leetcode.com/problems/binary-search/) `leetcode`
 ```cpp
  int Helper(vector<int>& nums, int target, int start,int end){
@@ -270,4 +273,58 @@ int FindX(long long n, int a)
     }
     return -1;
 }
+```
+- [Remove consecutive duplicate characters from a string.](https://www.geeksforgeeks.org/remove-consecutive-duplicates-string/) `GFG` 
+
+```
+string RemoveDuplicates(string p, string up)
+{
+    if (up == "")
+    {
+        return p;
+    }
+    if (p == "")
+    {
+
+        p.push_back(up.front());
+        up = up.substr(1);
+    }
+    char ch = p.back();
+    if (up.front() != ch)
+    {
+        p.push_back(up.front());
+        up = up.substr(1);
+        return RemoveDuplicates(p, up);
+    }
+    else
+    {
+        up = up.substr(1);
+        return RemoveDuplicates(p, up);
+    }
+}
+```
+- 
+
+- [Power Set of permutations of a string in Lexicographic order.](https://www.geeksforgeeks.org/powet-set-lexicographic-order/) `GFG`
+```
+vector<string> Permutations(string p, string up)
+{
+    if (up.empty())
+    {
+        vector<string> ans;
+        ans.push_back(p);
+        // cout << "##" << p << endl;
+        return ans;
+    }
+    char ch = up.front();
+    up = up.substr(1);
+    vector<string> ans_list1;
+    vector<string> ans_list2;
+    ans_list1 = Permutations(p, up);
+    ans_list2 = Permutations(string(p + ch), up);
+    ans_list1.insert(ans_list1.end(), ans_list2.begin(), ans_list2.end());
+    sort(ans_list1.begin(),ans_list1.end());
+    return ans_list1;
+}
+
 ```
