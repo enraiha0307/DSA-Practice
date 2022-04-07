@@ -154,7 +154,49 @@ string RemoveDuplicates(string p, string up)
         return RemoveDuplicates(p, up);
     }
 }
+bool isPalindrome(string str, int low, int high)
+{
 
+    while (low < high)
+    {
+        if (str[low] != str[high])
+            return false;
+        low++;
+        high--;
+    }
+    return true;
+}
+void PrintPalindromicPartitionsUtil(vector<vector<string>> &allans, vector<string> &currans, int start, int n, string str)
+{
+    if (start >= n)
+    {
+        allans.push_back(currans);
+        return;
+    }
+    for (int i = start; i < n; i++)
+    {
+        if (isPalindrome(str, start, i))
+        {
+            currans.push_back(str.substr(start, i - start - 1));
+            PrintPalindromicPartitionsUtil(allans, currans, i + 1, n, str);
+            // reverting the changes; backtracking; removing the substring str[start:i]
+            currans.pop_back();
+        }
+    }
+}
+void PrintPalindromicPartitions(string str)
+{
+    int n = str.length();
+    vector<vector<string>> allans;
+    vector<string> currans;
+    PrintPalindromicPartitionsUtil(allans, currans, 0, n, str);
+    for (int i = 0; i < allans.size(); i++)
+    {
+        for (int j = 0; j < allans[i].size(); j++)
+            cout << allans[i][j] << " ";
+        cout << "\n";
+    }
+}
 vector<string> Permutations(string p, string up)
 {
     if (up.empty())
@@ -192,7 +234,9 @@ int main()
     // cout << SumN(6) << endl;
     // cout << FindX(64, 2) << endl;
     // cout << RemoveDuplicates("", "aaaabbbngggb") << endl;
-    vector<string> result = PrintPalindromicPartitions("", "geeks");
+    string up = "geeks";
+    // string p = "";
+    PrintPalindromicPartitions(up);
     // std::string s("abc");
     // for (const std::string &t : generateSubstrings(s))
     // {
@@ -201,9 +245,9 @@ int main()
     // string up = "abc";
     // string p = "";
     // vector<string> result = Permutations(p, up);
-    for (auto x : result)
-    {
-        cout << x << endl;
-    }
+    // for (auto x : result)
+    // {
+    //     cout << x << endl;
+    // }
     return 0;
 }
