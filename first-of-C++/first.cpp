@@ -110,7 +110,10 @@ bool CheckPalin()
 
     return true;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8fb364b0bff58876e2c4420ceacb75aef62c702d
 void CheckArmstrong(int num)
 {
     int n = num;
@@ -146,7 +149,10 @@ void PrintArmStrong()
         i++;
     }
 }
+<<<<<<< HEAD
 >>>>>>>  Adding armstrong solution
+=======
+>>>>>>> 8fb364b0bff58876e2c4420ceacb75aef62c702d
 
 int main()
 {
