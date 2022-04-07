@@ -111,6 +111,43 @@ bool CheckPalin()
     return true;
 }
 
+void CheckArmstrong(int num)
+{
+    int n = num;
+    int sum = 0, d = 0, rem = 0, poweredNum = 0;
+    d = log10(n) + 1;
+    // cout << "d is" << d << endl;
+    while (n != 0)
+    {
+        rem = n % 10;
+        poweredNum = pow(rem, d);
+        // cout << "Powerednum" << poweredNum;
+        sum += poweredNum;
+        // cout << "sum is" << sum << endl;
+        n = n / 10;
+    }
+    // cout << "Sum" << sum << "num i " << num << endl;
+
+    if (sum == num)
+    {
+        cout << num << endl;
+    }
+}
+void PrintArmStrong()
+{
+    int a = 0, b = 0, i = 0;
+    cout << "enter two numbers" << endl;
+    cin >> a >> b;
+    // cout << a << b;
+    i = a;
+    while (i <= b)
+    {
+        CheckArmstrong(i);
+        i++;
+    }
+}
+>>>>>>>  Adding armstrong solution
+
 int main()
 {
     // cout << CheckEvenOrOdd(4) << endl;
@@ -128,6 +165,7 @@ int main()
     // {
     //     cout << "False" << endl;
     // }
-
+    PrintArmStrong();
+    // CheckArmstrong(153);
     return 0;
 }
