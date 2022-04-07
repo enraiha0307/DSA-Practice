@@ -22,28 +22,110 @@ void VolumeSphere();
 void VolumeCylinder();
 void CSACylinder();
 void TSACube();
+void SubProdAndSum();
+void PrintFactors();
+void InputSum();
+void InputLargestSum();
+
 int main()
 {
-    // VolumeCylinder();
-    // VolumeSphere();
-    //   VolumePyramid();
-    // VolumePrism();
-    //  VolumeCone()//
-    //   PeriRectangle();
-    //   PeriSquare();
-    //   PeriRhombus();
-    //    PeriParallelogram();
-    //     PeriEquilateralTriangle();
-    //         PeriCircle();
-    //      AreaEquiLateralRectangle();
-    //       AreaRhombus();
-    //        AreaParallelogram();
-    //         AreaIsocelesTriangle();
-    //          AreaRectangle();
-    //           AreaTriangle();
-    //           AreaCircle();
+
+    InputLargestSum();
+    // InputSum();
+    //  PrintFactors();
+    //   SubProdAndSum();
+    //    VolumeCylinder();
+    //    VolumeSphere();
+    //      VolumePyramid();
+    //    VolumePrism();
+    //     VolumeCone()//
+    //      PeriRectangle();
+    //      PeriSquare();
+    //      PeriRhombus();
+    //       PeriParallelogram();
+    //        PeriEquilateralTriangle();
+    //            PeriCircle();
+    //         AreaEquiLateralRectangle();
+    //          AreaRhombus();
+    //           AreaParallelogram();
+    //            AreaIsocelesTriangle();
+    //             AreaRectangle();
+    //              AreaTriangle();
+    //              AreaCircle();
     return 0;
 }
+
+// ********MATHS************
+int ProdNum(int N)
+{
+    if (N <= 1)
+        return N;
+    int rem = N % 10;
+    return (rem * ProdNum(N / 10));
+}
+int SumNum(int N)
+{
+    if (N <= 1)
+        return N;
+    int rem = N % 10;
+    return (rem + SumNum(N / 10));
+}
+void SubProdAndSum()
+{
+    int num = 0;
+    cout << "enter a number" << endl;
+    cin >> num;
+    int p = ProdNum(num);
+    int s = SumNum(num);
+    if (p >= s)
+    {
+        cout << "Subtraction is: " << p - s << endl;
+    }
+    else
+    {
+        cout << "Subtraction is" << s - p << endl;
+    }
+}
+
+void PrintFactors()
+{
+    int num;
+    cin >> num;
+    for (int i = 1; i <= num / 2; i++)
+    {
+        if (num % i == 0)
+        {
+            cout << i << "is a factor of" << num << endl;
+        }
+    }
+}
+
+void InputSum()
+{
+    int num, sum = 0;
+
+    while (cin >> num && num != 0)
+    {
+        sum += num;
+    }
+    cout << "sum is " << sum << endl;
+}
+
+void InputLargestSum()
+{
+    int num, sum = 0, max = INT16_MIN;
+
+    while (cin >> num && num != 0)
+    {
+        if (num > max)
+        {
+            max = num;
+        }
+    }
+    cout << "Largest of input is " << max << endl;
+}
+
+/////////////////////////////////
 
 void CSACylinder()
 {
