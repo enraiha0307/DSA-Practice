@@ -30,28 +30,28 @@ void InputLargestSum();
 int main()
 {
 
-    InputLargestSum();
-    // InputSum();
-    //  PrintFactors();
-    //   SubProdAndSum();
-    //    VolumeCylinder();
-    //    VolumeSphere();
-    //      VolumePyramid();
-    //    VolumePrism();
-    //     VolumeCone()//
-    //      PeriRectangle();
-    //      PeriSquare();
-    //      PeriRhombus();
-    //       PeriParallelogram();
-    //        PeriEquilateralTriangle();
-    //            PeriCircle();
-    //         AreaEquiLateralRectangle();
-    //          AreaRhombus();
-    //           AreaParallelogram();
-    //            AreaIsocelesTriangle();
-    //             AreaRectangle();
-    //              AreaTriangle();
-    //              AreaCircle();
+    // InputLargestSum();
+    //  InputSum();
+    //   PrintFactors();
+    //    SubProdAndSum();
+    //     VolumeCylinder();
+    //     VolumeSphere();
+    //       VolumePyramid();
+    //     VolumePrism();
+    //      VolumeCone()//
+    //       PeriRectangle();
+    //       PeriSquare();
+    //       PeriRhombus();
+    //        PeriParallelogram();
+    //         PeriEquilateralTriangle();
+    //             PeriCircle();
+    //          AreaEquiLateralRectangle();
+    //           AreaRhombus();
+    //            AreaParallelogram();
+    //             AreaIsocelesTriangle();
+    //              AreaRectangle();
+    //               AreaTriangle();
+    //               AreaCircle();
     return 0;
 }
 
