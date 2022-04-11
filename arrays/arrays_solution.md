@@ -270,20 +270,78 @@ vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
 15. [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/)
 
 ```
+int diagonalSum(vector<vector<int>>& mat) {
+        int d1=0,d2=0;
+        for(int i=0;i<mat.size();i++){
+            for(int j=0;j<mat[0].size();j++){
+                if(i==j){
+                    d1+=mat[i][j];
+                }
+                
+                if(i+j == mat.size()-1 && i!=j){
+                d2+=mat[i][j];
+                }
+
+                }
+        }
+        return d1+d2;
+    }
 
 ```
 
 16. [Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/)
 
 ```
-
+ int findNumbers(vector<int>& nums) {
+        int count=0;
+        for(auto x:nums){
+            int digits = log10(x)+1;
+            if(digits%2==0){
+                count ++;
+            }
+        }
+        return count;
+    }
 ```
 
 17. [Transpose Matrix](https://leetcode.com/problems/transpose-matrix/)
+```
+ vector<vector<int>> transpose(vector<vector<int>>& matrix) {
+        vector<vector<int>> ans(matrix[0].size(),vector<int>(matrix.size()));
+        for(int i=0;i<matrix.size();i++){
+            for(int j=0;j<matrix[0].size();j++){
+              ans[j][i]= matrix[i][j];
+            }
+        }
+        return ans;
+    }
+```
 18. [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/)
 19. [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/)
 20. [Determine Whether Matrix Can Be Obtained By Rotation](https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/)
 21. [Two Sum](https://leetcode.com/problems/two-sum/)
+```
+ vector<int> twoSum(vector<int>& nums, int target) {
+       vector<int> res;
+        for(int i=0;i<nums.size();i++){
+            int complement = target - nums[i];
+            
+            auto ind = find(nums.begin(),nums.end(),complement);
+            if(ind != nums.end() && ind-nums.begin()!=i){
+                
+                res.push_back(i);
+                res.push_back(ind-nums.begin());
+                break;
+            }
+
+        }
+        
+        return res;
+    }
+
+    Can be optimized using unordered_maps
+
+```
 22. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
 23. [Lucky Number In a Matrix](https://leetcode.com/problems/lucky-numbers-in-a-matrix/)
 24. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
