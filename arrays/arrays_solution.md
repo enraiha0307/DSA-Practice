@@ -343,6 +343,23 @@ int diagonalSum(vector<vector<int>>& mat) {
 
 ```
 22. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
+```
+vector<int> sumZero(int n) {
+        vector<int> ans;
+        int i=0,j=1;
+        if(n&1 && ans.empty()){
+            ans.push_back(0);
+            --n;
+        }
+        while(i<n/2){
+            ans.push_back(j);
+            ans.push_back(-j);
+            ++j;
+            ++i;
+        }
+        return ans;
+    }
+```
 23. [Lucky Number In a Matrix](https://leetcode.com/problems/lucky-numbers-in-a-matrix/)
 24. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 25. [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/)
