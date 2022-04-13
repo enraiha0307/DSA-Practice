@@ -30,6 +30,7 @@ cout<<endl;
 
 
 - [Maximum and Minimum value in an array](https://www.geeksforgeeks.org/recursive-programs-to-find-minimum-and-maximum-elements-of-array/) `GFG`
+
 ```cpp
 int findMin(int arr[], int n)
 {
@@ -48,11 +49,15 @@ int findMax(int arr[], int n)
     return max(arr[n - 1], findMax(arr, n - 1));
 }
 ```
+
 - [Print all possible palindromic partitions of a string.](https://www.geeksforgeeks.org/given-a-string-print-all-possible-palindromic-partition/) `GFG`
+
 ```
 
 ```
+
 - [Binary Search using recursion](https://leetcode.com/problems/binary-search/) `leetcode`
+
 ```cpp
  int Helper(vector<int>& nums, int target, int start,int end){
          int mid = start + (end-start)/2;
@@ -72,7 +77,9 @@ int findMax(int arr[], int n)
         return Helper(nums,target,start,end);
     }
 ```
+
 - [First Uppercase Letter in a String](https://www.geeksforgeeks.org/first-uppercase-letter-in-a-string-iterative-and-recursive/) `GFG`
+
 ```cpp
 char findUpper(string str, int i)
 {
@@ -91,6 +98,7 @@ char findUpper(string str, int i)
 ```
 
 - [Reverse String](https://leetcode.com/problems/reverse-string/) `leetcode`
+
 ```cpp
   void reverseString(vector<char>& s) {
         int n = s.size()-1;    
@@ -101,7 +109,9 @@ char findUpper(string str, int i)
         
     }
 ```
+
 - [Print 1 To N Without Loop](https://practice.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1/) `GFG`
+
 ```cpp
 int SumN(int n)
 {
@@ -328,3 +338,23 @@ vector<string> Permutations(string p, string up)
 }
 
 ```
+
+
+
+## Medium
+- [Combination Sum](https://leetcode.com/problems/combination-sum/) `leetcode`
+- [Word Search](https://leetcode.com/problems/word-search/) `leetcode`
+- [Target sum](https://leetcode.com/problems/target-sum/) `leetcode`
+- [Find Kth Bit in Nth Binary String](https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/) `leetcode`
+- [K-th Symbol in Grammar](https://leetcode.com/problems/k-th-symbol-in-grammar/) `leetcode`
+- [Count Good Numbers](https://leetcode.com/problems/count-good-numbers/) `leetcode`
+- [N Digit numbers with digits in increasing order](https://practice.geeksforgeeks.org/problems/n-digit-numbers-with-digits-in-increasing-order5903/1/) `GFG`
+- [Pow(x, n)](https://leetcode.com/problems/powx-n/) `leetcode`
+
+```
+
+double myPow(double x, int n) {
+        return pow(x,n);
+    }
+```
+
