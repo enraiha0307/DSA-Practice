@@ -51,9 +51,108 @@
     ```
 
 - [Two Sum II - Input array is sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+    ```cpp
+
+    vector<int> twoSum(vector<int>& numbers, int target) {
+            int l = 0;
+        int r = numbers.size() -1;
+
+        while(l < r){
+            if(numbers[l] + numbers[r] == target){
+            
+                return {l+1,r+1};;
+            }
+            else if(numbers[l] + numbers[r] > target){
+                r--;
+            }
+            else{
+                l++;
+            }
+        }
+        return {};
+        }
+    ```
+
 - [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/)
+
+    ```cpp
+    bool isPerfectSquare(int num) {
+        long long s=1,e=num,mid=0;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            cout<<mid<<endl;
+            if(mid*mid == num){
+                return true;
+                
+            }else if(mid*mid < num){
+                s = mid+1;
+            }else {
+                e=mid-1;
+            }
+        }
+        return false;
+    }
+
+    ```
+
 - [Arranging Coins(Easy)](https://leetcode.com/problems/arranging-coins/)
+
+    ```cpp
+   /* Concept:
+
+    1+2+3+...+x = n
+    -> (1+x)x/2 = n
+    -> x^2+x = 2n
+    -> x^2+x+1/4 = 2n +1/4
+    -> (x+1/2)^2 = 2n +1/4
+    -> (x+0.5) = sqrt(2n+0.25)
+    -> x = -0.5 + sqrt(2n+0.25)
+    */
+    int arrangeCoins(int n) {
+    return floor(-0.5+sqrt((double)2*n+0.25));
+    }
+
+    //using second equation
+
+    //convert int to long to prevent integer overflow
+        long nLong = (long)n;
+        
+        long st = 0;
+        long ed = nLong;
+        
+        long mid = 0;
+        
+        while (st <= ed){
+            mid = st + (ed - st) / 2;
+            
+            if (mid * (mid + 1) <= 2 * nLong){
+                st = mid + 1;
+            }else{
+                ed = mid - 1;
+            }
+        }
+        
+        return (int)(st - 1);
+
+    }
+    ```
+
 - [Find Smallest Letter Greater Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+
+    ``` cpp
+    char nextGreatestLetter(vector<char>& letters, char target) {
+     if (letters.back() <= target) return letters.front();
+        int low = 0, high = letters.size() - 1;
+        while (low < high) {
+            auto mid = (low + high) / 2;
+            if (target < letters[mid]) high = mid;
+            else low = mid + 1;
+        }
+        return letters[low];
+    }
+    ```
+
 - [Kth Missing Positive Number](https://leetcode.com/problems/kth-missing-positive-number/)
 - [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
