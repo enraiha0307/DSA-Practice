@@ -217,6 +217,57 @@ vector<string> Permutations(string p, string up)
     return ans_list1;
 }
 
+bool checkForG(string sub)
+{
+    int cg = 0, co = 0, ct = 0;
+    for (int i = 0; i < sub.length(); i++)
+    {
+        if (sub[i] == 'g')
+        {
+            cg++;
+        }
+        else if (sub[i] == 'o')
+        {
+            co++;
+        }
+        else if (sub[i] == 't')
+        {
+            ct++;
+        }
+    }
+    if (cg > co && cg > ct)
+    {
+        return true;
+    }
+    return false;
+}
+
+int MinLengthSubstring(string S, int N)
+{
+    if (S.length() < 2)
+        return -1;
+    int ans = N + 1;
+    string sub = "";
+    int n = S.length();
+    for (int i = 0; i < n; i++)
+    {
+        for (int i = 0; i < n; i++)
+            for (int j = i + 1; j < n; j++)
+            {
+                sub = S.substr(i, j - i + 1);
+                if (checkForG(sub))
+                {
+                    ans = min(ans, j - i + 1);
+                }
+            }
+    }
+    if (ans == N + 1)
+    {
+        return -1;
+    }
+    return ans;
+}
+
 int main()
 {
     // int arr[10] = {1, 2, 3, 4, 5, -8, 20};
@@ -234,9 +285,9 @@ int main()
     // cout << SumN(6) << endl;
     // cout << FindX(64, 2) << endl;
     // cout << RemoveDuplicates("", "aaaabbbngggb") << endl;
-    string up = "geeks";
+    // string up = "geeks";
     // string p = "";
-    PrintPalindromicPartitions(up);
+    // PrintPalindromicPartitions(up);
     // std::string s("abc");
     // for (const std::string &t : generateSubstrings(s))
     // {
@@ -249,5 +300,21 @@ int main()
     // {
     //     cout << x << endl;
     // }
+
+    // ----------CRED DSA QUESTION------------
+    int T = 0, N = 0;
+    string S;
+    cout << "enter No. of testcases" << endl;
+    cin >> T;
+    while (T--)
+    {
+        cout << "enter length of the string" << endl;
+        cin >> N;
+        cout << "enter the string" << endl;
+        cin >> S;
+        int minL = MinLengthSubstring(S, N);
+        cout << "Minimun Length Substrig is : " << minL << endl;
+    }
+
     return 0;
 }

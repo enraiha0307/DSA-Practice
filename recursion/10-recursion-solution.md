@@ -316,26 +316,26 @@ string RemoveDuplicates(string p, string up)
 - 
 
 - [Power Set of permutations of a string in Lexicographic order.](https://www.geeksforgeeks.org/powet-set-lexicographic-order/) `GFG`
-```
-vector<string> Permutations(string p, string up)
-{
-    if (up.empty())
+```cpp
+    vector<string> Permutations(string p, string up)
     {
-        vector<string> ans;
-        ans.push_back(p);
-        // cout << "##" << p << endl;
-        return ans;
+        if (up.empty())
+        {
+            vector<string> ans;
+            ans.push_back(p);
+            // cout << "##" << p << endl;
+            return ans;
+        }
+        char ch = up.front();
+        up = up.substr(1);
+        vector<string> ans_list1;
+        vector<string> ans_list2;
+        ans_list1 = Permutations(p, up);
+        ans_list2 = Permutations(string(p + ch), up);
+        ans_list1.insert(ans_list1.end(), ans_list2.begin(), ans_list2.end());
+        sort(ans_list1.begin(),ans_list1.end());
+        return ans_list1;
     }
-    char ch = up.front();
-    up = up.substr(1);
-    vector<string> ans_list1;
-    vector<string> ans_list2;
-    ans_list1 = Permutations(p, up);
-    ans_list2 = Permutations(string(p + ch), up);
-    ans_list1.insert(ans_list1.end(), ans_list2.begin(), ans_list2.end());
-    sort(ans_list1.begin(),ans_list1.end());
-    return ans_list1;
-}
 
 ```
 

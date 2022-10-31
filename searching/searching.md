@@ -5,9 +5,30 @@
 - [Square Root](https://leetcode.com/problems/sqrtx/)
 
     ```cpp
+    //1st solution
     int mySqrt(int x) {
        return pow(10,log10(x)/2);
     }
+
+    //2nd solution
+
+    int mySqrt(int x) {
+        if (x == 0)
+        return 0;
+    int left = 1, right = INT_MAX;
+    while (true) {
+        int mid = left + (right - left)/2;
+        if (mid > x/mid) {
+            right = mid - 1;
+        } else {
+            if (mid + 1 > x/(mid + 1))
+                return mid;
+            left = mid + 1;
+        }
+    }
+    }
+
+
 
     ```
 
@@ -135,7 +156,6 @@
         
         return (int)(st - 1);
 
-    }
     ```
 
 - [Find Smallest Letter Greater Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
@@ -155,6 +175,27 @@
 
 - [Kth Missing Positive Number](https://leetcode.com/problems/kth-missing-positive-number/)
 - [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+
+```cpp
+   int searchInsert(vector<int>& nums, int target) {
+        int mid=0;
+        int r= nums.size()-1;
+        int l=0;
+        
+        while(l<r){
+            mid = l + (r-l)/2;
+            if (nums[mid]==target) return mid;
+            if (nums[mid]<target) l=mid+1;
+            else r=mid;
+        }
+        return nums[l] < target ? l + 1: l;
+        
+        
+        
+    }
+
+```
+
 - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
 - [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
