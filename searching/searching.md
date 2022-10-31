@@ -174,6 +174,49 @@
     ```
 
 - [Kth Missing Positive Number](https://leetcode.com/problems/kth-missing-positive-number/)
+
+    ```cpp
+        // did not use binary search here
+    int findKthPositive(vector<int>& arr, int k) {
+            int ans=0,n=1;
+            while(true){
+                if(find(arr.begin(),arr.end(),n)==arr.end()){
+                    ++ans;
+                    if(ans==k){
+                        break;
+                    }
+                    ++n;
+                    
+                }else{
+                    ++n;
+                }
+            }
+            return n;
+        }
+
+        // With use of binary search
+    int findKthPositive(vector<int>& arr, int k) {
+        int low = 0;
+        int high = A.size()-1 ;
+        int mid;
+        while (low <= high) {
+                mid = (low + high) / 2;
+                if (A[mid] - (1 + mid) < k)  //A[m]-(m+1)   --> This gives umber of missing number before m'th index
+                    low = mid + 1;
+                else
+                    high = mid-1;
+            }
+            return low + k;
+    }
+    
+    //Two lines of code fastest
+       int findKthPositive(vector<int>& arr, int k) {
+            for (auto a : arr) if (a <= k) k++;
+            return k;
+       }
+
+    ```
+
 - [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 
 ```cpp
