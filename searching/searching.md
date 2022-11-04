@@ -162,14 +162,29 @@
 
     ``` cpp
     char nextGreatestLetter(vector<char>& letters, char target) {
-     if (letters.back() <= target) return letters.front();
+      if (letters.back() <= target) return letters.front();
         int low = 0, high = letters.size() - 1;
-        while (low < high) {
-            auto mid = (low + high) / 2;
-            if (target < letters[mid]) high = mid;
+        while (low <= high) {
+            auto mid = low+(high- low) / 2;
+            if (target < letters[mid]) high = mid-1;
             else low = mid + 1;
         }
         return letters[low];
+    }
+    ```
+
+    - [Find Greatest Letter Smaller Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+
+    ``` cpp
+    char nextGreatestLetter(vector<char>& letters, char target) {
+      if (letters.back() <= target) return letters.front();
+        int low = 0, high = letters.size() - 1;
+        while (low <= high) {
+            auto mid = low+(high- low) / 2;
+            if (target < letters[mid]) high = mid-1;
+            else low = mid + 1;
+        }
+        return letters[high];
     }
     ```
 
@@ -238,8 +253,65 @@
     }
 
 ```
+- Find target element in an infinite sorted array
+
+```cpp
+int findingAns(vector<int>& nums,int target){
+// first find the range
+// first start with box of size 2
+int start =0;
+int end= 1;
+
+//condition for target to lie in the range
+if (target >nums[end]){
+
+    // this like temp
+    int newStart = end+1;
+    //double the box value
+    // end = previous end + size of box * 2
+    end=end + (end-start +1)*2;
+    // update start
+    start = newStart;
+}
+return binarysearch(nums,target,start,end);
+
+}
+int binarysearch(vector<int>& nums,int target,int start, int end){
+    while(start<=end){
+    int mid = start + (end-start)/2;
+        if(target<nums[mid]){
+            end=mid-1;
+        }else if(target>nums[mid]){
+            start=mid+1;
+        }else return mid;
+    }
+    return -1;
+}
+
+```
 
 - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
+
+```cpp
+
+ int peakIndexInMountainArray(vector<int>& arr) {
+        int s=0;
+        int e=arr.size()-1;
+        while(s<e){
+            int mid = s+(e-s)/2;
+            if(arr[mid]>arr[mid+1]){
+                //you are in dec part of arr
+                //arr[mid] is greater and might be a possible ans 
+                //this is why e!=arr[mid-1]
+                e=mid;
+            }else{
+                s=mid+1;
+            }
+            
+        }
+        return s;
+    }
+```
 - [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
@@ -251,6 +323,43 @@
 ## Medium
 
 - [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+```cpp
+
+  vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> ans={-1,-1};
+        // check for first occurrence 
+        ans[0] = searchUtil(nums,target,true);
+        if(ans[0]!=-1)     {
+           ans[1]= searchUtil(nums,target,false); 
+        }
+   
+        return ans;
+      
+    }
+    
+int searchUtil(vector<int> nums, int target, bool findStartIndex){
+    int ans=-1;
+         int s=0,e=nums.size()-1;
+        
+        while(s<=e){
+            int mid= s+(e-s)/2;
+            if(target<nums[mid]) e=mid-1;
+            else if(target>nums[mid])s=mid+1;
+            // portential answer is found
+            else {
+                ans=mid;
+                if(findStartIndex){
+                    e=mid-1;
+                }else{
+                    s=mid+1;
+                }
+            };
+        }
+        return ans;
+    }
+
+```
 - [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
 - [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
