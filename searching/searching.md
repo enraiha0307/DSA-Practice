@@ -173,7 +173,7 @@
     }
     ```
 
-    - [Find Greatest Letter Smaller Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+- [Find Greatest Letter Smaller Than Target](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
 
     ``` cpp
     char nextGreatestLetter(vector<char>& letters, char target) {
@@ -253,6 +253,7 @@
     }
 
 ```
+
 - Find target element in an infinite sorted array
 
 ```cpp
@@ -312,6 +313,7 @@ int binarysearch(vector<int>& nums,int target,int start, int end){
         return s;
     }
 ```
+
 - [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
@@ -360,6 +362,7 @@ int searchUtil(vector<int> nums, int target, bool findStartIndex){
     }
 
 ```
+
 - [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
 - [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
@@ -385,5 +388,62 @@ int searchUtil(vector<int> nums, int target, bool findStartIndex){
 - [Book allocation](https://www.geeksforgeeks.org/allocate-minimum-number-pages/)
 - [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
 - [Find in Mountain Array](https://leetcode.com/problems/find-in-mountain-array/)
+
+```cpp
+
+ int findInMountainArray(int target, MountainArray &mountainArr) {
+        int s=0,index=-1;
+        int e = mountainArr.length()-1;
+        int peak = findPeakElement(mountainArr);
+        index = binarysearch(mountainArr,target,s,peak,true);
+        if(index!=-1){
+            return index;
+        }
+        
+        return binarysearch(mountainArr,target,peak+1,e,false);
+    }
+    
+int binarysearch(MountainArray &nums,int target,int start, int end,bool isAsc){
+while(start<=end){
+int mid = start + (end-start)/2;
+    
+    if(nums.get(mid)==target)return mid;
+    else if(isAsc){
+        
+         if(target<nums.get(mid)) end=mid-1;
+        else start=mid+1;
+            
+    }
+    else
+         {
+             if(target>nums.get(mid)) end=mid-1;
+             else start=mid+1;
+                
+            }
+    }
+    return -1;
+}
+    
+    
+int findPeakElement(MountainArray& arr) {
+int s=0;
+int e=arr.length()-1;
+while(s<e){
+    int mid = s+(e-s)/2;
+    if(arr.get(mid)>arr.get(mid+1)){
+        //you are in dec part of arr
+        //arr[mid] is greater and might be a possible ans 
+        //this is why e!=arr[mid-1]
+        e=mid;
+    }else{
+        s=mid+1;
+    }
+
+}
+return s;
+}
+
+```
+
 - [Count smaller number after Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/)
 - [Divide Chocolate Problem](https://curiouschild.github.io/leetcode/2019/06/21/divide-chocolate.html)
