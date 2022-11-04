@@ -365,6 +365,74 @@ int searchUtil(vector<int> nums, int target, bool findStartIndex){
 
 - [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
 - [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+```cpp
+
+int search(vector<int>& nums, int target) {
+        int pivot = findPivot(nums);
+        //cout<<"pivot:"<<nums[pivot];
+        if(pivot==-1){
+            //just do normal binary search
+            return binarysearch(nums,target,0,nums.size()-1,true);
+        }
+        //but if pivot is found then you will have 2 asc sorted arrays
+        //3 cases 
+        if(nums[pivot]==target)return pivot;
+        //if target>start search in s-pivot
+        if(target>=nums[0]) {
+            return binarysearch(nums,target,0,pivot,true);
+        }else{
+        return binarysearch(nums,target,pivot+1,nums.size()-1,true);
+        }
+        
+    }
+    
+    
+int findPivot(vector<int>& nums){
+int start=0;
+int end=nums.size()-1;
+while(start<=end){
+int mid = start+(end-start)/2;
+    
+    //4 cases 
+    
+if(mid<end && nums[mid]>nums[mid+1]){
+    cout<<end;
+    return mid;
+}else if(mid>start && nums[mid]<nums[mid-1]){
+        return mid-1;
+    }else if(nums[mid]<=nums[start]){
+        end=mid-1;
+    }else{
+        start=mid+1;
+    }
+}
+return -1;
+  }
+    
+int binarysearch(vector<int> &nums,int target,int start, int end,bool isAsc){
+while(start<=end){
+int mid = start + (end-start)/2;
+    
+    if(nums[mid]==target)return mid;
+    else if(isAsc){
+        
+         if(target<nums[mid]) end=mid-1;
+        else start=mid+1;
+            
+    }
+    else
+         {
+             if(target>nums[mid]) end=mid-1;
+             else start=mid+1;
+                
+            }
+    }
+    return -1;
+}
+
+```
+
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
 - [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 - [Find Peak Element](https://leetcode.com/problems/find-peak-element/)
