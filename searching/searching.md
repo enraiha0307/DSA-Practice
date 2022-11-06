@@ -434,6 +434,117 @@ int mid = start + (end-start)/2;
 ```
 
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+
+```cpp
+
+int findPivot(vector<int> &nums)
+{
+    int start = 0;
+    int end = nums.size() - 1;
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        // 4 cases
+
+        if (mid < end && nums[mid] > nums[mid + 1])
+        {
+            cout << end;
+            return mid;
+        }
+        else if (mid > start && nums[mid] < nums[mid - 1])
+        {
+            return mid - 1;
+        }
+        else if (nums[mid] == nums[start] && nums[mid] == nums[end])
+        {
+            // duplicates exist so just skip them
+            // but first check if start is the pivot
+            if (nums[start] > nums[start + 1])
+            {
+                return start;
+            }
+            start++;
+            // check is end is pivot
+            if (nums[end] > nums[end - 1])
+            {
+                return end;
+            }
+            end--;
+        }
+        else
+        {
+            if (nums[start] < nums[mid] || (nums[start] == nums[mid] && nums[mid] > nums[end]))
+            {
+                start = mid + 1;
+            }
+            else if (nums[start] < nums[mid] || nums[start] == nums[mid] && nums[mid] < nums[end])
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+    }
+    return -1;
+}
+
+int binarysearch(vector<int> &nums, int target, int start, int end, bool isAsc)
+{
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (nums[mid] == target)
+            return mid;
+        else if (isAsc)
+        {
+
+            if (target < nums[mid])
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+        else
+        {
+            if (target > nums[mid])
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+    }
+    return -1;
+}
+
+int search(vector<int> &nums, int target)
+{
+    int pivot = findPivot(nums);
+    // cout << "pivot:" << nums[pivot];
+    if (pivot == -1)
+    {
+        // just do normal binary search
+        return binarysearch(nums, target, 0, nums.size() - 1, true);
+    }
+    // but if pivot is found then you will have 2 asc sorted arrays
+    // 3 cases
+    if (nums[pivot] == target)
+        return pivot;
+    // if target>start search in s-pivot
+    if (target >= nums[0])
+    {
+        return binarysearch(nums, target, 0, pivot, true);
+    }
+    else
+    {
+        return binarysearch(nums, target, pivot + 1, nums.size() - 1, true);
+    }
+}
+
+
+```
+
 - [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 - [Find Peak Element](https://leetcode.com/problems/find-peak-element/)
 - [Find Right Interval](https://leetcode.com/problems/find-right-interval/)
@@ -455,6 +566,53 @@ int mid = start + (end-start)/2;
 - [Aggressive cows](https://www.spoj.com/problems/AGGRCOW/)
 - [Book allocation](https://www.geeksforgeeks.org/allocate-minimum-number-pages/)
 - [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
+
+```cpp
+
+int splitArray(vector<int> &nums, int k)
+{
+    int start = 0;
+    int end = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        start = max(start, nums[i]);
+        end = end + nums[i];
+    }
+
+    // binary search
+    while (start < end)
+    {
+        // try for the mid as potential ans
+        int mid = start + (end - start) / 2;
+
+        // calculate in how mnay pieces you can divide this in  with this max sum
+        int sum = 0;
+        int pieces = 1; // atleast the array can be divided into 1
+
+        for (int num : nums)
+        {
+            if (sum + num > mid)
+            {
+                // you cannot add this num in this subarray
+                //  assign it to a new sub array, the sum=num
+                sum = num;
+                // increase pieces by one
+                pieces++;
+            }else{
+                sum+=num;
+            }
+        }
+        if(pieces>m){
+            start=mid+1;
+        }else{
+            end=mid;
+        }
+    }
+    return end; // here start==end
+}
+
+```
+
 - [Find in Mountain Array](https://leetcode.com/problems/find-in-mountain-array/)
 
 ```cpp
