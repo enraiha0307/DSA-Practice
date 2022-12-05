@@ -69,6 +69,40 @@ int missingNumber(vector<int>& nums) {
 - [Sort Array by Increasing Frequency](https://leetcode.com/problems/sort-array-by-increasing-frequency/)
 - [Special Array With X Elements Greater Than or Equal X](https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/)
 - [Find all numbers disappeared in an array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+
+```cpp
+
+ vector<int> findDisappearedNumbers(vector<int>& nums) {
+     
+         int i=0;
+        while(i<nums.size()){
+            int correct = nums[i]-1;
+            if(nums[i]!=nums[correct]){
+                swap(nums,i,correct);
+            }else{
+                i++;
+            }
+            
+        }
+        //search for all missing numbers
+        vector<int> ans;
+        for(int index=0;index<nums.size();index++){
+            if(nums[index]!=index+1){
+                ans.push_back(index+1);
+            }
+        }
+        return ans;
+        
+    }
+    
+    void swap(vector<int>& nums,int first,int second){
+        int temp = nums[first];
+        nums[first]= nums[second];
+        nums[second]=temp;
+    }
+
+```
+
 - [Set Mismatch](https://leetcode.com/problems/set-mismatch/)
 - [2Sum](https://leetcode.com/problems/two-sum/)
 
