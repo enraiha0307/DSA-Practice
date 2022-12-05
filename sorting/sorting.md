@@ -104,6 +104,51 @@ int missingNumber(vector<int>& nums) {
 ```
 
 - [Set Mismatch](https://leetcode.com/problems/set-mismatch/)
+
+```cpp
+
+ vector<int> findErrorNums(vector<int>& nums) {
+        
+     sort(nums);
+        
+        // search the array
+        vector<int> ans;
+        for(int index=0;index<nums.size();index++){
+            if(nums[index]!=index+1){
+                 ans.push_back(nums[index]);
+                 ans.push_back(index+1);  
+                return ans;
+            
+            }
+            
+        }
+        
+        // case 2
+        return ans;
+    }
+    
+    void sort(vector<int>& nums){
+        int i=0;
+        while(i<nums.size()){
+            int correct = nums[i]-1;
+            if(nums[i]!=nums[correct]){
+                swap(nums,i,correct);
+            }else{
+                i++;
+            }
+            
+        }
+    }
+    
+    void swap(vector<int>& nums,int first,int second){
+        int temp = nums[first];
+        nums[first]= nums[second];
+        nums[second]=temp;
+    }
+
+
+```
+
 - [2Sum](https://leetcode.com/problems/two-sum/)
 
 ## Medium
