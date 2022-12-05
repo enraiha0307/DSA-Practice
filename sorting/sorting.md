@@ -152,6 +152,38 @@ int missingNumber(vector<int>& nums) {
 
 - [Find all Duplicates in an array](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
 
+```cpp
+vector<int> findDuplicates(vector<int>& nums) {
+    //cyclic sort
+         int i=0;
+        while(i<nums.size()){
+            int correct = nums[i]-1;
+            if(nums[i]!=nums[correct]){
+                swap(nums,i,correct);
+            }else{
+                i++;
+            }
+        }
+        
+        // serach for duplicates
+         vector<int> ans;
+        for(int index=0;index<nums.size();index++){
+            if(nums[index]!=index+1){
+                ans.push_back(nums[index]);
+            }
+        }
+        return ans;
+        
+    }
+    
+     void swap(vector<int>& nums,int first,int second){
+        int temp = nums[first];
+        nums[first]= nums[second];
+        nums[second]=temp;
+    }
+
+```
+
 ## Hard
 
 - [First missing Positive](https://leetcode.com/problems/first-missing-positive/)
