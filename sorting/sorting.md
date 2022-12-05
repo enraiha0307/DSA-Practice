@@ -233,6 +233,36 @@ vector<int> findDuplicates(vector<int>& nums) {
 
 - [First missing Positive](https://leetcode.com/problems/first-missing-positive/)
 
+```cpp
+
+ int firstMissingPositive(vector<int>& nums) {
+         int i=0;
+        while(i<nums.size()){
+           
+            if(nums[i]>0 && nums[i]<=nums.size() && nums[i]!=nums[nums[i]-1]){
+                swap(nums,i,nums[i]-1);
+            }else{
+                i++;
+            }
+            
+        }
+        //search for missing number
+        for(int index=0;index<nums.size();index++){
+            if(nums[index]!=index+1){
+                return index+1;
+            }
+        }
+        
+        return nums.size()+1;
+    }
+     void swap(vector<int>& nums,int first,int second){
+        int temp = nums[first];
+        nums[first]= nums[second];
+        nums[second]=temp;
+    }
+
+```
+
     © 2022 GitHub, Inc.
 
     Terms
