@@ -136,11 +136,19 @@ int splitArray(vector<int> &nums, int k)
                 sum = num;
                 // increase pieces by one
                 pieces++;
+            }else{
+                sum+=num;
             }
         }
+        if(pieces>m){
+            start=mid+1;
+        }else{
+            end=mid;
+        }
     }
-    return end // here start==end
+    return end; // here start==end
 }
+
 
 int main()
 {
