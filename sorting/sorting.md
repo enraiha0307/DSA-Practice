@@ -7,6 +7,44 @@
 - [Majority Element](https://leetcode.com/problems/majority-element/)
 - [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 - [Missing Number](https://leetcode.com/problems/missing-number/)
+
+```cpp
+
+int missingNumber(vector<int>& nums) {
+        sort(nums);
+        
+        // search the array
+        for(int index=0;index<nums.size();index++){
+            if(nums[index]!=index){
+                return index;
+            }
+        }
+        
+        // case 2
+        return nums.size();
+    }
+    
+    void sort(vector<int>& nums){
+        int i=0;
+        while(i<nums.size()){
+            if(nums[i]<nums.size() && nums[i]!=nums[nums[i]]){
+                swap(nums,i,nums[i]);
+            }else{
+                i++;
+            }
+            
+        }
+    }
+    
+    void swap(vector<int>& nums,int first,int second){
+        int temp = nums[first];
+        nums[first]= nums[second];
+        nums[second]=temp;
+    }
+
+
+```
+
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
 - [Third Maximum Number](https://leetcode.com/problems/third-maximum-number/)
