@@ -315,6 +315,33 @@ int binarysearch(vector<int>& nums,int target,int start, int end){
 ```
 
 - [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
+
+```cpp
+
+int countNegatives(vector<vector<int>>& grid) {
+        int count=0;
+        int m = grid.size();
+        int n = grid[0].size();
+        int rstart = 0;
+        int rend = m-1;
+        int col = n-1;
+        while(rstart<=rend && col>=0){
+            // Case 1
+            if(grid[rstart][col]<0){
+                count=count+(m-rstart);
+                col--;
+
+            }else{
+                rstart++;
+            }
+
+        }
+        return count;
+    }
+
+
+```
+
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
 - [Fair Candy Swap](https://leetcode.com/problems/fair-candy-swap/)
