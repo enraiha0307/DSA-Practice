@@ -343,11 +343,101 @@ int countNegatives(vector<vector<int>>& grid) {
 ```
 
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
+
+```cpp
+
+//Used linear search here 
+vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
+        vector<int> ans;
+        for(int i=0;i<m;i++){
+            int index = linearsearch(nums2,nums1[i]);
+            cout<<nums1[i]<<index<<endl;
+            if(index!=-1){
+                index = linearsearch(ans,nums1[i]);
+                cout<<nums1[i]<<index<<endl;
+                if (index==-1){
+                    ans.push_back(nums1[i]);
+                }
+                
+            }
+        }
+        return ans;
+    }
+    int linearsearch(vector<int>& nums,int target){
+        int start = 0;
+        int end = nums.size()-1;
+
+        while(start<=end){
+        if(nums[start]==target){
+            return start;
+        }else{
+            start++;
+        }
+        }
+            return -1;
+    }
+
+
+```
+
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
 - [Fair Candy Swap](https://leetcode.com/problems/fair-candy-swap/)
 - [Check If N and Its Double Exist](https://leetcode.com/problems/check-if-n-and-its-double-exist/)
+
+```cpp
+//linear search APPLIED
+ bool checkIfExist(vector<int>& arr) {
+        for(int i =0 ;i<arr.size();i++){
+            int target = 2 * arr[i];
+            int j = linears(arr,target);
+            if(j!=-1 && i!=j){
+                cout<<arr[j];
+                return true;
+            }
+        }
+            
+            
+        return false;
+    }
+
+    int linears(vector<int>& nums, int target) {
+        int end = nums.size()-1;
+        int start=0;
+        while(start <= end){
+            if(nums[start]==target) return start;
+            else{
+                start++ ;
+            }
+
+        }
+        return-1;
+    }
+
+
+```
+
 - [Special Array With X Elements Greater Than or Equal X](https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/)
 - [Binary Search](https://leetcode.com/problems/binary-search/)
+
+```cpp
+int search(vector<int>& nums, int target) {
+        int end = nums.size()-1;
+        int start=0;
+        while(start <= end){
+            int mid = start + (end-start)/2;
+            if(nums[mid]==target) return mid;
+            if(nums[mid]>target){
+                end=mid-1;
+            }else{
+                start= mid+1;
+            }
+        }
+        return-1;
+    }
+
+```
 
 ## Medium
 
