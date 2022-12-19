@@ -419,6 +419,33 @@ vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
 ```
 
 - [Special Array With X Elements Greater Than or Equal X](https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/)
+
+```cpp
+//linear Search 
+int specialArray(vector<int>& nums) {
+        int end = nums.size();
+        int start=0,i=0;
+        sort(nums.begin(),nums.end());
+        while(start<end){
+           if(i<=nums[start]){
+               int numberOfEleGreater = end-start;
+               if(i!=numberOfEleGreater){
+                   i++;
+               }else{
+                   return i;
+               }
+           }else{
+               start++;
+           }
+
+        }
+        
+
+        return -1;
+    }
+
+```
+
 - [Binary Search](https://leetcode.com/problems/binary-search/)
 
 ```cpp
