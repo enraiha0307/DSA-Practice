@@ -83,6 +83,4 @@ while(cur->next != NULL){
 return prev->data;
 }
 }
-
-
 ```
