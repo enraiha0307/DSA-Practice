@@ -37,3 +37,24 @@ llist = prev;
 return llist;
 }
 ```
+- [Compare two linked lists](https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true&h_r=next-challenge&h_v=zen)
+
+```cpp
+
+bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+while(head1!=NULL && head2!=NULL){
+    if(head1->data != head2->data){
+        return 0;
+    }
+    head1=head1->next;
+    head2=head2->next;
+    
+    
+}
+if(head1==NULL && head2==NULL){
+    return 1;
+}
+return 0;
+}
+
+```
