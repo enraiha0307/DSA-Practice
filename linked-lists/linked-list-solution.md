@@ -58,3 +58,31 @@ return 0;
 }
 
 ```
+
+- [Position from tail](https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+
+```cpp
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+SinglyLinkedListNode *prev, * cur;
+prev=llist,cur=llist;
+int i=0;
+if (positionFromTail==0){
+    while(llist->next!=NULL){
+        llist=llist->next;
+    }
+    return llist->data;
+}else{
+    while(i<positionFromTail){
+    cur = cur->next;
+    i++;
+}
+while(cur->next != NULL){
+    prev = prev->next;
+    cur=cur->next;
+}
+return prev->data;
+}
+}
+
+
+```
