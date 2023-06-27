@@ -59,28 +59,28 @@ return 0;
 
 ```
 
-- [Merge two sorted linked lists](https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+- [Position from tail](https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
 
 ```cpp
-
-SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
-    SinglyLinkedListNode *result=NULL;
-if(head1==NULL){
-    return head2;
-}else if(head2==NULL){
-    return head1;
-}
-
-
-    if(head1->data <= head2->data){
-        result = head1;
-        result->next = mergeLists(head1->next, head2);
-    }else{
-        result = head2;
-        result->next = mergeLists(head1, head2->next);
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+SinglyLinkedListNode *prev, * cur;
+prev=llist,cur=llist;
+int i=0;
+if (positionFromTail==0){
+    while(llist->next!=NULL){
+        llist=llist->next;
     }
-
-return result;
+    return llist->data;
+}else{
+    while(i<positionFromTail){
+    cur = cur->next;
+    i++;
 }
-
+while(cur->next != NULL){
+    prev = prev->next;
+    cur=cur->next;
+}
+return prev->data;
+}
+}
 ```
