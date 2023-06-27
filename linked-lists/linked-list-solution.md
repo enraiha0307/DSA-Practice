@@ -37,6 +37,7 @@ llist = prev;
 return llist;
 }
 ```
+
 - [Compare two linked lists](https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true&h_r=next-challenge&h_v=zen)
 
 ```cpp
@@ -84,3 +85,27 @@ return prev->data;
 }
 }
 ```
+
+- [Merge two sorted linked lists](https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+
+```cpp
+
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+    SinglyLinkedListNode *result=NULL;
+if(head1==NULL){
+    return head2;
+}else if(head2==NULL){
+    return head1;
+}
+
+
+    if(head1->data <= head2->data){
+        result = head1;
+        result->next = mergeLists(head1->next, head2);
+    }else{
+        result = head2;
+        result->next = mergeLists(head1, head2->next);
+    }
+
+return result;
+}
