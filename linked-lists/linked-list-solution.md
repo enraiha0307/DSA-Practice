@@ -109,3 +109,29 @@ if(head1==NULL){
 
 return result;
 }
+```
+
+- [Detect Cycle in a Linked List](https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem?isFullScreen=true)
+
+```cpp
+// Using Floyd Cycle finding Algorithm
+// Uses a slow ptr and a fast ptr
+bool has_cycle(SinglyLinkedListNode* head) {
+SinglyLinkedListNode* slow;
+SinglyLinkedListNode* fast;
+
+slow = fast= head;
+
+while(slow && fast && fast->next){
+    slow = slow->next;
+    fast = fast->next->next;
+    if(slow==fast){
+        return true;
+    }
+    
+}
+return false;
+
+}
+```
+
