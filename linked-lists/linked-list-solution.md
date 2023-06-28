@@ -164,3 +164,35 @@
     return ptr1->data;
     }
     ```
+
+- [Inserting a Node Into a Sorted Doubly Linked List](https://www.hackerrank.com/challenges/insert-a-node-into-a-sorted-doubly-linked-list/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+
+    ```cpp
+
+    DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* llist, int data) {
+        DoublyLinkedListNode* ptr = llist;
+        DoublyLinkedListNode* newNode = new DoublyLinkedListNode(data);
+        if(llist == NULL){
+            llist = newNode;
+        }else if(newNode->data <= ptr->data){
+            newNode->next = ptr;
+            newNode->next->prev = newNode;
+            llist = newNode;
+        }else{
+            ptr = llist;
+        while(ptr->next!=NULL && ptr->next->data < newNode->data ){
+            ptr = ptr->next;
+            }
+            newNode->next = ptr->next;
+            if(ptr->next!=NULL){
+                newNode->next->prev = newNode;
+            }
+            
+            ptr->next = newNode;
+            newNode->prev = ptr;
+        
+        }
+        return llist;
+    }
+
+    ```
