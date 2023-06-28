@@ -421,6 +421,26 @@
 
     ```
 
+29. [Reverse an array/vector](https://www.hackerrank.com/challenges/arrays-ds/problem?isFullScreen=true)
+
+```cpp
+
+vector<int> reverseArray(vector<int> a) {
+int len = a.size();
+int i=0,j=len-1;
+while(i<j){
+    int tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
+    ++i;
+    --j;
+}
+return a;
+}
+```
+
+
+
 ## Medium
 
 1. [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
