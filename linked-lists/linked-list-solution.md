@@ -135,3 +135,34 @@ return false;
 }
 ```
 
+- [Find Merge Point of Two Lists](https://www.hackerrank.com/challenges/find-the-merge-point-of-two-joined-linked-lists/problem?isFullScreen=true&h_r=next-challenge&h_v=zen)
+
+
+```cpp
+// two pointer technique
+int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+SinglyLinkedListNode *ptr1, *ptr2;
+ptr1 = head1;
+ptr2= head2;
+
+while(ptr1 != ptr2){
+    ptr1=ptr1->next;
+    ptr2=ptr2->next;
+    
+    if(ptr1==ptr2){
+        return ptr1->data;
+    }
+    
+    if(ptr1==NULL){
+        ptr1=head2;
+    }
+    
+    if(ptr2==NULL){
+        ptr2=head1;
+    }
+}
+return ptr1->data;
+}
+
+
+```
