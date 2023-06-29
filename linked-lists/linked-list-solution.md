@@ -196,3 +196,26 @@
     }
 
     ```
+
+- [Reverse a doubly linked list](https://www.hackerrank.com/challenges/reverse-a-doubly-linked-list/problem?isFullScreen=true)
+
+    ````cpp
+
+    DoublyLinkedListNode* reverse(DoublyLinkedListNode* llist) {
+        DoublyLinkedListNode* tmp = NULL;
+        DoublyLinkedListNode* cur = llist;
+
+        while(cur!=NULL){
+            tmp = cur->prev;
+            cur->prev=cur->next;
+            cur->next = tmp;
+            cur = cur->prev;
+            }
+            
+            if(tmp!=NULL){
+                llist = tmp->prev;
+            }
+        return llist;
+    }
+
+    ```
