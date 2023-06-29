@@ -219,3 +219,24 @@
     }
 
     ```
+
+- [Delete duplicate-value nodes from a sorted linked list](https://www.hackerrank.com/challenges/delete-duplicate-value-nodes-from-a-sorted-linked-list/problem?isFullScreen=true)
+   
+    ```cpp
+
+    SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* llist) {
+    SinglyLinkedListNode *prev, *cur;
+    cur = llist;
+
+    while(cur->next!=NULL){
+        if(cur->data == cur->next->data){
+            cur->next = cur->next->next;
+        }else{
+            cur = cur->next;
+        }
+        
+    }
+    return llist;
+    }
+
+    ```
