@@ -39,3 +39,22 @@
 
 
     ```
+ 
+ - [Tree: Height of a Binary Tree](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+
+    ```cpp
+    int height(Node* root) {
+        // Write your code here.
+        if(root==NULL) return -1;
+        else{
+            int lDepth = height(root->left);
+            int rDepth = height(root->right);
+            
+            if(lDepth>rDepth){
+                return (1+lDepth);
+            }else{
+                return (1+rDepth);
+            }
+        }
+
+    ```
