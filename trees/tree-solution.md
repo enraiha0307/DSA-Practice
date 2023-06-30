@@ -25,3 +25,17 @@
     }
 
     ```
+
+- [Tree: Inorder Traversal](https://www.hackerrank.com/challenges/tree-inorder-traversal/problem?isFullScreen=true&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen)
+
+    ```cpp
+
+    void inOrder(Node *root) {
+        if(root==NULL) return;
+        inOrder(root->left);
+        cout<<root->data<<" ";
+        inOrder(root->right);
+    }
+
+
+    ```
