@@ -12,3 +12,16 @@
         }
 
     ```
+
+- [Tree: Postorder Traversal](https://www.hackerrank.com/challenges/tree-postorder-traversal/problem?isFullScreen=true&h_r=next-challenge&h_v=zen)
+
+    ```cpp
+
+    void postOrder(Node *root) {
+        if(root==NULL) return;
+        postOrder(root->left);
+        postOrder(root->right);
+        cout<<root->data<<" ";
+    }
+
+    ```
