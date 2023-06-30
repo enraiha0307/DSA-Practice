@@ -58,3 +58,28 @@
         }
 
     ```
+
+- [Tree: Level Order Traversal](https://www.hackerrank.com/challenges/tree-level-order-traversal/problem?isFullScreen=true)
+
+    ```cpp
+    void levelOrder(Node * root) {
+        if(root==NULL)return;
+        queue<Node*> q;
+        q.push(root);
+        
+        while(q.empty()==false){
+            Node* newNode = q.front();
+            cout<<newNode->data<<" ";
+            q.pop();
+            
+            if(newNode->left!=NULL){
+                q.push(newNode->left);
+            }      
+            
+            if(newNode->right!=NULL){
+                q.push(newNode->right);
+            }
+        }
+        }
+
+    ```
