@@ -114,3 +114,23 @@
 
         }
     ```
+
+- [Binary Search Tree : Insertion](https://www.hackerrank.com/challenges/binary-search-tree-insertion/problem?isFullScreen=true&h_r=next-challenge&h_v=zen)
+
+    ```cpp
+        Node * insert(Node * root, int data) {
+            
+            if(root==NULL) {
+                Node *tmp = new Node(data);
+                return tmp;
+            }
+            
+            if(data<root->data){
+                root->left = insert(root->left, data);
+            }else if(data>root->data){
+                root->right = insert(root->right, data);
+            }
+            
+            return root;
+        }
+    ```
